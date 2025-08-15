@@ -82,6 +82,6 @@ const polling = client.createPolling();
 
 // イベント
 for await (const op of polling.listenTalkEvents()) {
-    console.log(op)
+    // console.log(op)
     await handle_event(client, op, commands);
 }
