@@ -4,6 +4,28 @@ function IsString(value) {
     return typeof value === "string" || value instanceof String;
 }
 
+const cooldowns = new Map();
+
+const COOLDOWN_MS = 3000; // 3秒
+
+async function checkCooldown(mid, commandName) {
+    const key = `${mid}-${commandName}`;
+    const now = Date.now();
+
+    if (cooldowns.has(key)) {
+        const lastUsed = cooldowns.get(key);
+        const diff = now - lastUsed;
+
+        if (diff < COOLDOWN_MS) {
+            const remaining = ((COOLDOWN_MS - diff) / 1000).toFixed(1);
+            return { onCooldown: true, remaining };
+        }
+    }
+
+    cooldowns.set(key, now);
+    return { onCooldown: false };
+}
+
 async function runCommand(client, name, args, message, commands_) {
     // コマンド名を小文字化して統一
     const commandName = name.toLowerCase();
@@ -39,6 +61,12 @@ export default async function handleCommand(client, message, commands_) {
 
     const cmd = text.replace("!", "");
     const name = cmd.split(" ")[0];
+
+    const cooldown_res = await checkCooldown(message.from, name)
+
+    if (cooldown_res.onCooldown) {
+        return;
+    }
 
     try {
         if (text.split(" ").length == 0) {
