@@ -1,0 +1,17 @@
+{
+  "name": "linebot-v2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@evex/linejs": "npm:@jsr/evex__linejs@^2.1.13",
+    "dotenv": "^17.2.1"
+  },
+  "type": "module"
+}
