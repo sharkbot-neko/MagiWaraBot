@@ -5,10 +5,15 @@ export default {
     execute: async function (client, message, args) {
         if (args.length >= 3) {
             try {
-                const text = await translate(args[0], args[1], args.slice(2).join(" "));
+                const result = await translate(
+                    args[0], 
+                    args[1], 
+                    args.slice(2).join(" ")
+                );
+
                 await client.talk.sendMessage({
                     to: message.to,
-                    text: `翻訳結果\n[${args[0]} → ${args[1]}]\n\n${text}`
+                    text: `翻訳結果\n[${args[0]} → ${args[1]}]\n\n${result.text}\n\n(検出元: ${result.source})`
                 });
             } catch (err) {
                 await client.talk.sendMessage({
