@@ -3,6 +3,7 @@ import { BaseClient } from "@evex/linejs/base";
 import { FileStorage } from "@evex/linejs/storage";
 import dotenv from "dotenv";
 import handle_event from "./modules/events/handle_event.js";
+import make_db from "./modules/lib/make_db.js";
 
 import path from "path";
 import fs from "fs";
@@ -16,6 +17,8 @@ dotenv.config();
 
 // console.log(process.env.email)
 // console.log(process.env.password)
+
+await make_db();
 
 const storage = new FileStorage("./storage.json");
 
@@ -82,6 +85,6 @@ const polling = client.createPolling();
 
 // イベント
 for await (const op of polling.listenTalkEvents()) {
-    // console.log(op)
+    console.log(op)
     await handle_event(client, op, commands);
 }
