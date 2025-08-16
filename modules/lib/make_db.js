@@ -16,5 +16,12 @@ export default async function make_db() {
     )
     `);
 
+    await db.run(`
+    CREATE TABLE IF NOT EXISTS welcome (
+        id TEXT PRIMARY KEY,
+        gid TEXT
+    )
+    `);
+
     await db.close();
 }
