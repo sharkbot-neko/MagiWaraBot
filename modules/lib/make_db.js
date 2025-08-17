@@ -7,6 +7,7 @@ export default async function make_db() {
         driver: sqlite3.Database
     });
 
+    // Ban情報
     await db.run(`
     CREATE TABLE IF NOT EXISTS ban (
         id TEXT PRIMARY KEY,
@@ -16,10 +17,20 @@ export default async function make_db() {
     )
     `);
 
+    // よろしく情報
     await db.run(`
     CREATE TABLE IF NOT EXISTS welcome (
         id TEXT PRIMARY KEY,
         gid TEXT
+    )
+    `);
+
+    // お金情報
+    await db.run(`
+    CREATE TABLE IF NOT EXISTS money (
+        id TEXT PRIMARY KEY,
+        mid TEXT,
+        amount INTEGER,
     )
     `);
 
