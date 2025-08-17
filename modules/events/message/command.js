@@ -4,7 +4,7 @@ function IsString(value) {
     return typeof value === "string" || value instanceof String;
 }
 
-const cooldowns = new Map();
+var cooldowns = new Map();
 
 const COOLDOWN_MS = 3000; // 3秒
 
