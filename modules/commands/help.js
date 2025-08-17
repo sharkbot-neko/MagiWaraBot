@@ -14,6 +14,7 @@ export default {
                 "!lookup .. ユーザー情報を取得します。\n" +
                 "!mid .. 実行した人のmidを取得します。\n" + 
                 "!translate .. 翻訳をします。\n" + 
+                "!wiki .. Wikipediaを検索します。\n" +
 
                 "経済系のコマンド\n" +
                 "!work .. コインを稼ぎます。\n" +

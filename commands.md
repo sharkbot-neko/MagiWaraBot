@@ -11,6 +11,7 @@
 !lookup .. ユーザー情報を取得します。
 !mid .. 実行した人のmidを取得します。
 !translate .. 翻訳をします。
+!wiki .. Wikipediaを検索します。
 
 経済系のコマンド
 !work .. コインを稼ぎます。

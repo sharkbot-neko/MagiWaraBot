@@ -5,7 +5,6 @@ export default async function ban_check(client, op) {
     const joinedUser = op.param2;
 
     if (!groupId || !joinedUser) {
-        console.error("groupId or joinedUser is null", { groupId, joinedUser });
         return;
     }
     if (await ban.isBanned(joinedUser, groupId)) {
