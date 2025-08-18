@@ -30,7 +30,7 @@ export default async function make_db() {
     CREATE TABLE IF NOT EXISTS money (
         id TEXT PRIMARY KEY,
         mid TEXT,
-        amount INTEGER,
+        amount INTEGER
     )
     `);
 

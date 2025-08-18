@@ -1,4 +1,5 @@
 import welcome from "./../../lib/welcome.js"
+import ban from "./../../lib/ban.js"
 
 export default async function _welcome(client, op) {
     const groupId = op.param1;
@@ -12,7 +13,7 @@ export default async function _welcome(client, op) {
 
     if (await welcome.isEnabled(groupId)) {
         await client.talk.sendMessage({
-            to: message.to,
+            to: op.param1,
             text: `誰かが参加したよ！`
         });
     }

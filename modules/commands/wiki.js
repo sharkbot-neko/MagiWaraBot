@@ -14,7 +14,7 @@ export default {
             const params = new URLSearchParams({
                 action: "query",
                 format: "json",
-                titles: word,
+                titles: args[0],
                 prop: "info",
                 inprop: "url"
             });
@@ -46,7 +46,8 @@ export default {
                 text: `検索結果\n${shortUrl}`
             })
             return;
-        } catch {
+        } catch (e) {
+            console.error(e);
             await client.talk.sendMessage({
                 to: message.to,
                 text: `不明なエラーが発生しました。`

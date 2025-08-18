@@ -8,15 +8,10 @@ export default async function ban_check(client, op) {
         return;
     }
     if (await ban.isBanned(joinedUser, groupId)) {
-        // await client.talk.deleteOtherFromChat({request: {
-        //     chatMid: groupId,
-        //     targetUserMids: [joinedUser],
-        //     reqSeq: op.reqSeq
-        // }});
-
-        await client.talk.sendMessage({
-            to: groupId,
-            text: `Banされているメンバーが参加しました。`
-        });
+        await client.talk.deleteOtherFromChat({request: {
+            chatMid: groupId,
+            targetUserMids: [joinedUser],
+            reqSeq: op.reqSeq
+        }});
     }
 }

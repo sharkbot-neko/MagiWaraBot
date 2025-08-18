@@ -11,7 +11,8 @@ export default {
         const row = await db.get(`SELECT amount FROM money WHERE mid = ?`, [mid]);
 
         await db.close();
-        return row || 0;
+
+        return row ? row.amount : 0;
     },
 
     add: async function add(mid, amount) {
