@@ -28,10 +28,9 @@ export default async function make_db() {
     // お金情報
     await db.run(`
     CREATE TABLE IF NOT EXISTS money (
-        id TEXT PRIMARY KEY,
-        mid TEXT,
+        mid TEXT PRIMARY KEY,
         amount INTEGER
-    )
+    );
     `);
 
     await db.close();

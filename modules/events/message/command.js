@@ -62,12 +62,6 @@ export default async function handleCommand(client, message, commands_) {
     const cmd = text.replace("!", "");
     const name = cmd.split(" ")[0];
 
-    const cooldown_res = await checkCooldown(message.from, name)
-
-    if (cooldown_res.onCooldown) {
-        return;
-    }
-
     try {
         if (text.split(" ").length == 0) {
             await runCommand(client, name, [], message);
