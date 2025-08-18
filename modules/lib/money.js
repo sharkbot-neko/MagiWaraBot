@@ -24,9 +24,7 @@ export default {
         });
 
         await db.run(
-            `INSERT INTO money (mid, amount)
-             VALUES (?, ?)
-             ON CONFLICT(mid) DO UPDATE SET amount = amount + excluded.amount`,
+            `INSERT OR REPLACE INTO money (mid, amount) VALUES (?, ?);`,
             [mid, amount]
         );
 
