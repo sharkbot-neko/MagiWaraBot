@@ -9,12 +9,12 @@ export default {
         });
 
         const row = await db.get(
-            `SELECT amount FROM mute WHERE mid = ?`,
+            `SELECT mid FROM mute WHERE mid = ?`,
             [mid]
         );
 
         await db.close();
-        return row || null;
+        return row ? row.mid : null;
     },
 
     async add(mid) {
@@ -24,7 +24,7 @@ export default {
         });
 
         await db.run(
-            `INSERT OR REPLACE INTO mute (mid) VALUES (?);`,
+            `INSERT OR IGNORE INTO mute (mid) VALUES (?);`,
             [mid]
         );
 
