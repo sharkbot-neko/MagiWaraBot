@@ -33,5 +33,12 @@ export default async function make_db() {
     );
     `);
 
+    // ミュート情報
+    await db.run(`
+    CREATE TABLE IF NOT EXISTS mute (
+        mid TEXT PRIMARY KEY
+    );
+    `);
+
     await db.close();
 }

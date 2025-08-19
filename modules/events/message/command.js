@@ -1,4 +1,5 @@
 import { ClientRequest } from "http";
+import mute from "../../lib/mute.js";
 
 function IsString(value) {
     return typeof value === "string" || value instanceof String;
@@ -58,6 +59,14 @@ export default async function handleCommand(client, message, commands_) {
     if (!IsString(text)) return;
 
     if (!text.startsWith("!")) return;
+
+    if (await mute.get(message.from)) {
+        await client.talk.sendMessage({
+            to: message.to,
+            text: "あなたはブラックリストに登録されているため実行できません。"
+        })
+        return;
+    }
 
     const cmd = text.replace("!", "");
     const name = cmd.split(" ")[0];
