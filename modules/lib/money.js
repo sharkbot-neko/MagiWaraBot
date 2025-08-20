@@ -23,9 +23,16 @@ export default {
             driver: sqlite3.Database
         });
 
+        const row = await db.get(
+            `SELECT amount FROM money WHERE mid = ?`,
+            [mid]
+        );
+
+        const c = row ? row.amount : 0 + amount;
+
         await db.run(
             `INSERT OR REPLACE INTO money (mid, amount) VALUES (?, ?);`,
-            [mid, amount]
+            [mid, c]
         );
 
         await db.close();

@@ -20,7 +20,7 @@ export default {
             } else {
                 await client.talk.sendMessage({
                     to: message.to,
-                    text: `使い方: !blacklist [mid]`
+                    text: `使い方: !mute [mid]`
                 })
                 return;
             }
