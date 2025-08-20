@@ -28,7 +28,7 @@ export default {
             [mid]
         );
 
-        const c = row ? row.amount : 0 + amount;
+        const c = (row ? row.amount : 0) + amount;
 
         await db.run(
             `INSERT OR REPLACE INTO money (mid, amount) VALUES (?, ?);`,
